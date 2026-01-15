@@ -4466,7 +4466,7 @@ def main(page: ft.Page):
         content=ft.Container(
             content=ft.Row([
                 # 로고
-                img = ft.Image(src=resource_path("logo.png"), height=40, fit="contain"),
+                ft.Image(src=resource_path("logo.png"), height=40, fit="contain"),
                 
                 # 빈 공간
                 ft.Container(expand=True),
@@ -4500,7 +4500,7 @@ def main(page: ft.Page):
     # [수정] Login View (정렬 호환성 패치)
     login_card = ft.Container(
         content=ft.Column([
-            img = ft.Image(src=resource_path("logo.png"), height=80, fit="contain"),
+            ft.Image(src=resource_path("logo.png"), height=80, fit="contain"),
             
             ft.Text("Login to continue", size=14, color=Colors.TEXT_SUB),
             
