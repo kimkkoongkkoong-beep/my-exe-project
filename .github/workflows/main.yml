@@ -16,7 +16,8 @@ jobs:
         if (Test-Path requirements.txt) { pip install -r requirements.txt }
     - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile main.py
+        # logo.png 파일을 exe 내부에 포함시킵니다.
+        pyinstaller --onefile --noconsole --add-data "logo.png;." main.py
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
