@@ -1,0 +1,6 @@
+flet
+requests
+plyer
+pyperclip
+beautifulsoup4
+urllib3
