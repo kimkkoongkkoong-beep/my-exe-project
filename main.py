@@ -27,6 +27,16 @@ import os
 # SSL 경고 무시
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller로 만들어진 exe는 내부적으로 _MEIPASS라는 임시 폴더를 씁니다.
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # ==========================================
 # [수정] 요금 관리 매니저 (사용자 요금표 반영)
 # ==========================================
@@ -4456,7 +4466,7 @@ def main(page: ft.Page):
         content=ft.Container(
             content=ft.Row([
                 # 로고
-                ft.Image(src="/logo.png", height=40, fit="contain"),
+                img = ft.Image(src=resource_path("logo.png"), height=40, fit="contain"),
                 
                 # 빈 공간
                 ft.Container(expand=True),
@@ -4490,7 +4500,7 @@ def main(page: ft.Page):
     # [수정] Login View (정렬 호환성 패치)
     login_card = ft.Container(
         content=ft.Column([
-            ft.Image(src="/logo.png", height=80, fit="contain"),
+            img = ft.Image(src=resource_path("logo.png"), height=80, fit="contain"),
             
             ft.Text("Login to continue", size=14, color=Colors.TEXT_SUB),
             
